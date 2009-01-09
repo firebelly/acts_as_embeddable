@@ -1,0 +1,25 @@
+ActsAsEmbeddable
+================
+
+Currently this plugin only handles youtube videos, but I intend to add support for more embeddable media. It's untested
+and I wouldn't really recommend using it yet, but I will be working on it.
+
+Inspiration was pretty much taken from the XHTML embed plugin for wordpress: http://wordpress.org/extend/plugins/xhtml-video-embed/
+
+
+Example
+=======
+
+in your model:
+
+acts_as_embeddable :content
+
+Users can then enter something like this into the CMS:
+[youtube]http://www.youtube.com/watch?v=PQbuyKUaKFo[/youtube]
+or
+[youtube]PQbuyKUaKFo[/youtube]
+or
+[youtube width="150" height="100"]PQbuyKUaKFo[/youtube]
+
+
+Copyright (c) 2009 Keith Norman, released under the MIT license
