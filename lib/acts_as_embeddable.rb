@@ -1,4 +1,6 @@
 require 'youtube'
+require 'vimeo'
+
 module Acts
   module Embeddable
   def self.included(base)
@@ -19,11 +21,12 @@ module Acts
   module InstanceMethods
   def embed_embeddables(text)
     #video = text.match(/\[(youtube|vimeo)[width="\d*"\s?|height="\d*"\s?]*\](\w*)\[\/\1\]/)
-    test = /\[(youtube|vimeo)[width="\d*"\s?|height="\d*"\s?]*\](\S*v=|\s?)(\w*)\[\/\1\]/
+    test = /\[(youtube|vimeo)[width="\d*"\s?|height="\d*"\s?]*\](\S*v=|\s?|[[a-z:\/{1,}\.]*)(\w*)\[\/\1\]/
     video = text.match(test)
     if video
     case video[1]
       when "youtube"    then Youtube.new(video[3], text).text
+      when "vimeo"    then Vimeo.new(video[3], text).text
       else text
     end
     end
