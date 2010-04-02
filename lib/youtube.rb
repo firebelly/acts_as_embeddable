@@ -3,7 +3,7 @@ module Acts
     class Youtube
       
       def initialize(id, text)
-        test = /\[(youtube)[width="\d*"\s?|height="\d*"\s?]*\](\S*v=|\s?)(\w*)\[\/\1\]/
+        test = /\[(youtube)[width="\d*"\s?|height="\d*"\s?]*\](\S*v=|\s?)(.*)\[\/\1\]/
         @id = id
         @text = text
         @text.gsub!(test, embed_code.gsub(/\{video\}/, @id).gsub(/\{width\}/, width_and_height(text)[:width]).gsub(/\{height}/, width_and_height(text)[:height]))
